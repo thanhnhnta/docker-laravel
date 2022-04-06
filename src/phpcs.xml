@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<ruleset name="Reserve Repository Standard">
+
+    <description>予約開発におけるコーディング規約</description>
+
+    <rule ref="PSR1"/>
+    <rule ref="PSR2">
+        <!-- 一列の最大文字数制限 -->
+        <exclude name="Generic.Files.LineLength"/>
+        <!-- メソッド名のキャメルケース縛り -->
+        <exclude name="PSR1.Methods.CamelCapsMethodName.NotCamelCaps"/>
+        <!-- メソッド名のアンダースコア始まり禁止 -->
+        <exclude name="PSR2.Methods.MethodDeclaration.Underscore"/>
+    </rule>  
+    <file>app/</file>
+</ruleset>
