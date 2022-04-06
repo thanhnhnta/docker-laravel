@@ -11,12 +11,10 @@
 >
     <projectFiles>
         <directory name="app"/>
-        <directory name="Domain"/>
         <!--制約がキツイため一部抑制する-->
         <!--ToDo 下記ファイルを正しく修正することで例外を抑える-->
         <ignoreFiles>
-            <file name="app/Console/Commands/SendMail.php"/>
-            <file name="app/Console/Commands/WorkerCommand.php"/>
+            <file name="app/Console/*"/>
         </ignoreFiles>
     </projectFiles>
 
