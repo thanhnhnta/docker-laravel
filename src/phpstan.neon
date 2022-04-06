@@ -19,7 +19,7 @@ parameters:
       path: app/Console/
     - message: '/of encapsed string cannot be cast to string./'
       path: app/Providers/BladeServiceProvider.php
-    - message: '/Cannot access property $id on mixed./'
+    - message: '#^Cannot access property \$id\ on mixed.#'
       path: app/Providers/RouteServiceProvider.php
   inferPrivatePropertyTypeFromConstructor: true
   checkMissingIterableValueType: false
