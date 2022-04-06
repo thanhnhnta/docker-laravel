@@ -1,7 +1,7 @@
 parameters:
   level: max
   paths:
-    - Domain
+    - app
   ignoreErrors:
       - '/Unsafe usage of new static\(\)./' #staticが使えないのはキツすぎるため
   inferPrivatePropertyTypeFromConstructor: true
