@@ -36,7 +36,7 @@ jobs:
         run: phpcs -q --report=checkstyle ./app | cs2pr
   
       - name: Run PHPStan
-        run: phpstan analyse ./app
+        run: phpstan analyse
         
       - name: PHP CS Fixer Version
         run:  php-cs-fixer --version
