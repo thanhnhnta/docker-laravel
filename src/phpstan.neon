@@ -5,9 +5,6 @@ parameters:
   paths:
     - app
   ignoreErrors:
-    # 以下たちはLaravelのせいなのでスルー
-    - message: '/Illuminate\\Contracts\\Container\\Container::call\(\) expects \(callable\(\): mixed\)\|string/'
-      path: app/Console/
     - message: '#^Cannot access property \$id\ on mixed.#'
       path: app/Providers/RouteServiceProvider.php
   inferPrivatePropertyTypeFromConstructor: true
