@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<psalm
+    errorLevel="4"
+    resolveFromConfigFile="true"
+    totallyTyped="true"
+    strictBinaryOperands="true"
+    allowPhpStormGenerics="true"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="https://getpsalm.org/schema/config"
+    xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd"
+>
+    <projectFiles>
+        <directory name="app"/>
+        <directory name="Domain"/>
+        <!--制約がキツイため一部抑制する-->
+        <!--ToDo 下記ファイルを正しく修正することで例外を抑える-->
+        <ignoreFiles>
+            <file name="app/Console/Commands/SendMail.php"/>
+            <file name="app/Console/Commands/WorkerCommand.php"/>
+        </ignoreFiles>
+    </projectFiles>
+
+    <!--無視する項目-->
+    <issueHandlers>
+        <InvalidCast errorLevel="suppress" />
+        <InvalidArgument errorLevel="suppress" />
+        <InvalidReturnStatement errorLevel="suppress" />
+        <InvalidReturnType errorLevel="suppress" />
+        <LessSpecificImplementedReturnType errorLevel="suppress" />
+        <InvalidOperand errorLevel="suppress" />
+        <TooManyArguments errorLevel="suppress" />
+        <InvalidScalarArgument errorLevel="suppress" />
+        <InvalidDocblock errorLevel="suppress" />
+        <ConstructorSignatureMismatch errorLevel="suppress" />
+        <MethodSignatureMismatch errorLevel="suppress" />
+    </issueHandlers>
+</psalm>
