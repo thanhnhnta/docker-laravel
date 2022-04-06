@@ -18,20 +18,29 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.1.4'
-
-      - name: Prepare
-        run: |
-          wget https://github.com/FriendsOfPHP/PHP-CS-Fixer/releases/download/v3.8.0/php-cs-fixer.phar -O php-cs-fixer
-          chmod a+x php-cs-fixer
-
+          tools: cs2pr, phpcs, php-cs-fixer, phpstan, psalm
+          
       - name: OS Version
         run: cat /etc/os-release
 
       - name: PHP Version
         run: php -v
-
+      
       - name: PHP CS Fixer Version
-        run: php php-cs-fixer --version
+        run:  phpcs --version
+      
+      - name: Run phpcs
+        run: phpcs -q --report=checkstyle src | cs2pr
+  
+      - name: Run PHPStan
+        run: phpstan analyse src
+        
+      - name: PHP CS Fixer Version
+        run:  php-cs-fixer --version
 
       - name: PHP CS Fixer Run
-        run: php php-cs-fixer fix --diff -vvv --dry-run ./app
+        run: php-cs-fixer fix --diff -vvv --dry-run src
+        
+      - name: Run Psalm
+        run: psalm --output-format=github
+        
