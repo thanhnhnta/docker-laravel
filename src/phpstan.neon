@@ -5,7 +5,7 @@ parameters:
   paths:
     - app
   ignoreErrors:
-    - message: '#^Cannot access property \$id\ on mixed.#'
+    - message: '#^Cannot access property \$id\ on mixed.$#'
       path: app/Providers/RouteServiceProvider.php
   inferPrivatePropertyTypeFromConstructor: true
   checkMissingIterableValueType: false
