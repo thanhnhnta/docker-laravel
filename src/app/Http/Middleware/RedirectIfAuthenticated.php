@@ -19,7 +19,7 @@ class RedirectIfAuthenticated
      * @param string|null ...$guards
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function handle(Request $request, Closure $next, ...$guards)
+    public function handle(Request $request, Closure $next, ...$guards): Response|RedirectResponse|Redirector
     {
         $guards = empty($guards) ? [null] : $guards;
 
