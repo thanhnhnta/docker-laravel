@@ -5,7 +5,7 @@ parameters:
   paths:
     - app
   ignoreErrors:
-    - message: '#^Parameter \#1\ \$key\ of method Illuminate\\Cache\\RateLimiting\\Limit\:\:by() expects string, int<min, -1>|int<1, max>|string|null given.$#'
+    - message: '#^Parameter \#1\ \$key\ of method Illuminate\\Cache\\RateLimiting\\Limit\:\:by\(\) expects string, int<min, -1>|int<1, max>|string|null given.$#'
       path: app/Providers/RouteServiceProvider.php
   inferPrivatePropertyTypeFromConstructor: true
   checkMissingIterableValueType: false
