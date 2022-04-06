@@ -6,9 +6,6 @@ parameters:
     - app
   ignoreErrors:
     # I/O周りで厳密な型チェックをされるとツライので、下記らへんは緩めの制約にする
-    - message: `/Unsafe usage of new static\(\)./`
-      paths:
-        - Providers/RouteServiceProvider.php
     - message: '/expects string, (mixed|array\|string|array\|string\|null) given./'
       path: app/Adapter/Converter/
     - message: '/expects string, (int|int\|null|string\|null) given./'
