@@ -18,10 +18,13 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.1.4'
-          tools: cs2pr, phpcs, php-cs-fixer, phpstan, psalm
+          tools: composer:v2, cs2pr, phpcs, php-cs-fixer, phpstan, psalm
           
       - name: OS Version
         run: cat /etc/os-release
+
+      - name: Install dependency nunomaduro/larastan
+        run: composer require nunomaduro/larastan:^2.0 --dev
 
       - name: PHP Version
         run: php -v
