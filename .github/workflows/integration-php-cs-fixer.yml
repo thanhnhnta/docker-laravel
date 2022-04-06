@@ -30,16 +30,16 @@ jobs:
         run:  phpcs --version
       
       - name: Run phpcs
-        run: phpcs -q --report=checkstyle src | cs2pr
+        run: phpcs -q --report=checkstyle ./app | cs2pr
   
       - name: Run PHPStan
-        run: phpstan analyse src
+        run: phpstan analyse ./app
         
       - name: PHP CS Fixer Version
         run:  php-cs-fixer --version
 
       - name: PHP CS Fixer Run
-        run: php-cs-fixer fix --diff -vvv --dry-run src
+        run: php-cs-fixer fix --diff -vvv --dry-run ./app
         
       - name: Run Psalm
         run: psalm --output-format=github
