@@ -1,7 +1,25 @@
+includes:
+  - ./vendor/nunomaduro/larastan/extension.neon
 parameters:
   level: max
   paths:
     - app
   ignoreErrors:
-      - '/Unsafe usage of new static\(\)./' #staticが使えないのはキツすぎるため
+    # I/O周りで厳密な型チェックをされるとツライので、下記らへんは緩めの制約にする
+    - message: '/expects string, (mixed|array\|string|array\|string\|null) given./'
+      path: app/Adapter/Converter/
+    - message: '/expects string, (int|int\|null|string\|null) given./'
+      paths:
+        - app/Adapter/Gateway/
+        - app/Adapter/System/Mail/StackedMailGateway.php
+    - message: '/expects int, (int\|null) given./'
+      path: app/Adapter/Gateway/
+    # 以下たちはLaravelのせいなのでスルー
+    - message: '/Illuminate\\Contracts\\Container\\Container::call\(\) expects \(callable\(\): mixed\)\|string/'
+      path: app/Console/
+    - message: '/of encapsed string cannot be cast to string./'
+      path: app/Providers/BladeServiceProvider.php
+    - message: '/Cannot access property $id on mixed./'
+      path: app/Providers/RouteServiceProvider.php
   inferPrivatePropertyTypeFromConstructor: true
+  checkMissingIterableValueType: false
