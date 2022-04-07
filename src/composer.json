@@ -21,7 +21,8 @@
         "phpstan/phpstan": "*",
         "phpunit/phpunit": "*",
         "vimeo/psalm": "*",
-        "squizlabs/php_codesniffer": "*"
+        "squizlabs/php_codesniffer": "*",
+		"friendsofphp/php-cs-fixer": "*"		
     },
     "autoload": {
         "psr-4": {
