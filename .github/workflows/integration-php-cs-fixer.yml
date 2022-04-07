@@ -13,28 +13,22 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      
+
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.1.4'
-          tools: composer:v2, cs2pr
-          
-      - name: OS Version
-        run: cat /etc/os-release
+          php-version: '8.1'
+          tools: composer:v2, cs2pr         
         
-      - name: PHP Version
-        run: php -v
-
-      - name: Composer Install dependency
+      - name: Install dependency composer
         run: composer install
-            
+      
       - name: Run phpcs
         run: ./vendor/bin/phpcs -q --report=checkstyle ./app | cs2pr
   
       - name: Run PHPStan
         run: ./vendor/bin/phpstan analyse
-        
+
       - name: PHP CS Fixer Run
         run: ./vendor/bin/php-cs-fixer fix --diff -vvv --dry-run ./app
         
