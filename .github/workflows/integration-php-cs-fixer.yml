@@ -18,13 +18,21 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.1.4'
-          tools: composer:v2, cs2pr, phpcs, php-cs-fixer, phpstan, psalm
+          tools: composer:v2, cs2pr, phpcs, php-cs-fixer, phpstan
           
       - name: OS Version
         run: cat /etc/os-release
 
       - name: Install dependency nunomaduro/larastan
         run: composer require nunomaduro/larastan:^2.0 --dev
+        
+      - name: Install dependency vimeo/psalm 
+        run: composer require --dev vimeo/psalm 
+        ./vendor/bin/psalm --init   
+      
+      - name: Install dependency  psalm/plugin-laravel
+        run: composer require --dev psalm/plugin-laravel
+        ./vendor/bin/psalm-plugin enable psalm/plugin-laravel
 
       - name: PHP Version
         run: php -v
@@ -45,5 +53,5 @@ jobs:
         run: php-cs-fixer fix --diff -vvv --dry-run ./app
         
       - name: Run Psalm
-        run: psalm --output-format=github
+        run: ./vendor/bin/psalm --output-format=github
         
