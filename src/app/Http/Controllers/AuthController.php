@@ -7,10 +7,11 @@ use Validator;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Http\JsonResponse;
 
 class AuthController extends Controller
 {
-    public function register(Request $request)
+    public function register(Request $request): JsonResponse
     {
         $validator = Validator::make($request->all(), [
             'name'     => 'required|string|max:255',
@@ -36,7 +37,7 @@ class AuthController extends Controller
         ]);
     }
 
-    public function login(Request $request)
+    public function login(Request $request): JsonResponse
     {
         $validator = Validator::make($request->all(), [
             'email'    => 'required|string',
@@ -61,7 +62,7 @@ class AuthController extends Controller
         ]);
     }
 
-    public function me(Request $request)
+    public function me(Request $request): mixed
     {
         return $request->user();
     }
