@@ -8,7 +8,10 @@ $finder = PhpCsFixer\Finder::create()
         __DIR__ . '/database/seeders',
         __DIR__ . '/routes',
         __DIR__ . '/tests',
-    ]);
+    ])->name('*.php')
+    ->notName('*.blade.php')
+    ->ignoreDotFiles(true)
+    ->ignoreVCS(true);
 
 $config = new PhpCsFixer\Config();
 
@@ -38,4 +41,4 @@ return $config
         'not_operator_with_successor_space' => true,
     ])
     ->setFinder($finder);
-	
+

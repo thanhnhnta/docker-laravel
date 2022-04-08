@@ -23,14 +23,14 @@ jobs:
       - name: Install dependency composer
         run: composer install
       
-      - name: Run phpcs
-        run: ./vendor/bin/phpcs -q --report=checkstyle ./app | cs2pr
+      - name: Run phpcs      
+        run: ./vendor/bin/phpcs -q --standard=PSR12 --colors --encoding=utf-8 -n -p app/
   
       - name: Run PHPStan
         run: ./vendor/bin/phpstan analyse
 
       - name: PHP CS Fixer Run
-        run: php-cs-fixer fix --diff -vvv --dry-run ./app
+        run: php-cs-fixer fix --diff -vvv --dry-run app/
         
       - name: Run Psalm
         run: ./vendor/bin/psalm --output-format=github
