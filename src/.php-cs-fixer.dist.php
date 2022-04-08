@@ -21,7 +21,7 @@ return $config
         '@PhpCsFixer:risky' => true,
         'blank_line_after_opening_tag' => false,
         'linebreak_after_opening_tag' => false,
-        'declare_strict_types' => true,
+        'declare_strict_types' => false,
         'phpdoc_types_order' => [
             'null_adjustment' => 'always_last',
             'sort_algorithm' => 'none',

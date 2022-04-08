@@ -19,9 +19,10 @@ class NotificationService implements NotificationServiceInterface
     /**
      * @param $data
      * @param $topicName
+     * @retrun bool
      * @throws GuzzleException
      */
-    public function sendNotification($data, $topicName = null)
+    public function sendNotification($data, $topicName = null): bool
     {
         $url = 'https://fcm.googleapis.com/fcm/send';
         $data = [
@@ -53,9 +54,10 @@ class NotificationService implements NotificationServiceInterface
     /**
      * @param $deviceToken
      * @param $topicName
+     * @retrun bool
      * @throws GuzzleException
      */
-    public function subscribeTopic($deviceTokens, $topicName = null)
+    public function subscribeTopic($deviceTokens, $topicName = null): bool
     {
         $url = 'https://iid.googleapis.com/iid/v1:batchAdd';
         $data = [
@@ -69,9 +71,10 @@ class NotificationService implements NotificationServiceInterface
     /**
      * @param $deviceToken
      * @param $topicName
+     * @retrun bool
      * @throws GuzzleException
      */
-    public function unsubscribeTopic($deviceTokens, $topicName = null)
+    public function unsubscribeTopic($deviceTokens, $topicName = null): bool
     {
         $url = 'https://iid.googleapis.com/iid/v1:batchRemove';
         $data = [
