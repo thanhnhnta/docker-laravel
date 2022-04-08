@@ -8,7 +8,10 @@ $finder = PhpCsFixer\Finder::create()
         __DIR__ . '/database/seeders',
         __DIR__ . '/routes',
         __DIR__ . '/tests',
-    ]);
+    ])->name('*.php')
+    ->notName('*.blade.php')
+    ->ignoreDotFiles(true)
+    ->ignoreVCS(true);
 
 $config = new PhpCsFixer\Config();
 
@@ -18,7 +21,7 @@ return $config
         '@PhpCsFixer:risky' => true,
         'blank_line_after_opening_tag' => false,
         'linebreak_after_opening_tag' => false,
-        'declare_strict_types' => true,
+        'declare_strict_types' => false,
         'phpdoc_types_order' => [
             'null_adjustment' => 'always_last',
             'sort_algorithm' => 'none',
@@ -38,4 +41,4 @@ return $config
         'not_operator_with_successor_space' => true,
     ])
     ->setFinder($finder);
-	
+
