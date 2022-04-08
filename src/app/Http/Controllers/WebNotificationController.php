@@ -1,12 +1,10 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\Models\User;
-
 class WebNotificationController extends Controller
 {
+
     public function __construct()
     {
         $this->middleware('auth:sanctum');
@@ -18,7 +16,7 @@ class WebNotificationController extends Controller
 
     public function storeToken(Request $request)
     {
-        auth()->user()->update(['device_key' => $request->token]);
+        auth()->user()->update(['device_key'=>$request->token]);
         return response()->json(['Token successfully stored.']);
     }
 
@@ -56,7 +54,7 @@ class WebNotificationController extends Controller
         curl_setopt($ch, CURLOPT_POSTFIELDS, $encodedData);
         // Execute post
         $result = curl_exec($ch);
-        if ($result === false) {
+        if ($result === FALSE) {
             die('Curl failed: ' . curl_error($ch));
         }
         // Close connection
