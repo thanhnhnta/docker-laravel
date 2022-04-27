@@ -26,6 +26,45 @@ $ make install-recommend-packages # Optional
 
 http://localhost
 
+## Github Action
+```
+name: PHP Coding Standards Fixer
+
+on:
+  pull_request:
+
+jobs:
+  php-cs-fixer:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: src
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
+          tools: composer:v2, php-cs-fixer, cs2pr
+        
+      - name: Install dependency composer
+        run: composer install
+      
+      - name: Run phpcs      
+        run: ./vendor/bin/phpcs -q --standard=PSR12 --colors --encoding=utf-8 -n -p app/
+  
+      - name: Run PHPStan
+        run: ./vendor/bin/phpstan analyse
+
+      - name: PHP CS Fixer Run
+        run: php-cs-fixer fix --diff -vvv --dry-run app/
+        
+      - name: Run Psalm
+        run: ./vendor/bin/psalm --output-format=github
+```
 ## Tips
 
 - Read this [Makefile](https://github.com/ucan-lab/docker-laravel/blob/main/Makefile).
