@@ -2,16 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Log;
 
 class HomeController extends Controller
 {
     public function welcome(Request $request)
     {
+//        Log::build([
+//            'driver' => 'single',
+//            'path' => storage_path('logs/custom.log'),
+//        ])->info('Something happened!');
         return view('welcome');
     }
 }
