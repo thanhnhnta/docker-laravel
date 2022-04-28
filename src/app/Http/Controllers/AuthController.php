@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\LoginEvent;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
@@ -39,6 +41,7 @@ class AuthController extends Controller
 
     public function login(Request $request): JsonResponse
     {
+
         $validator = Validator::make($request->all(), [
             'email'    => 'required|string',
             'password' => 'required|string',
@@ -55,6 +58,7 @@ class AuthController extends Controller
         $user  = User::where('email', $request['email'])->firstOrFail();
 
         $token = $user->createToken('auth_token')->plainTextToken;
+        event(new LoginEvent($user));
 
         return response()->json([
             'access_token' => $token,
